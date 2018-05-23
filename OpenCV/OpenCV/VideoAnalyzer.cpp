@@ -55,19 +55,15 @@ public:
 		while (true)
 		{
 			orgVideo >> frame;
-
+			
 			if (frame.empty())
 			{
 				break;
 			}
 
-			cvtColor(frame, frame, COLOR_BGR2GRAY);
-			Canny(frame, frame, 150, 210);
-			//equalizeHist(frame, frame);
-			//cvtColor(frame, frame, COLOR_GRAY2BGR);
-			//morphologyEx(frame, frame, MORPH_TOPHAT, kernel);
+			morphologyEx(frame, frame, MORPH_TOPHAT, kernel);
 			imshow("Morphology Video", frame);
-
+			
 			char c = (char)waitKey(1);
 			if (c == 27)
 			{
@@ -80,14 +76,3 @@ public:
 
 
 };
-
-int main(int argc, char **argv)
-{
-
-	VideoAnalyzer va(argv[1]);
-
-	va.TopHatView();
-
-	return 0;
-
-}
