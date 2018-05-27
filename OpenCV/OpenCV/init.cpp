@@ -61,10 +61,13 @@ public:
 				break;
 			}
 
-			cvtColor(frame, analyzeFrame, COLOR_BGR2GRAY);
-			halfOfImage(analyzeFrame);
-			analyzeImage(analyzeFrame);
-			showOverayImage(frame, analyzeFrame);
+			//cvtColor(frame, analyzeFrame, COLOR_BGR2GRAY);
+			//halfOfImage(analyzeFrame);
+			//analyzeImage(analyzeFrame);
+			//showOverayImage(frame, analyzeFrame);
+			Mat kernel(3, 3, CV_8U);
+			morphologyEx(frame, frame, MORPH_TOPHAT, kernel);
+			imshow("test of morphology kernel", frame);
 
 			char c = (char)waitKey(1);
 			if (c == 27)
