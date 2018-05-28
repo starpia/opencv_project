@@ -132,12 +132,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="init.cpp" />
-    <ClCompile Include="MyVideoCV.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="VideoAnalyzer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyVideoCV.hpp" />
+    <ClInclude Include="VideoAnalyzer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
