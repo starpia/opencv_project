@@ -1,4 +1,4 @@
-#include "VideoAnalyzer.hpp"
+#include "LpAnalyzer.hpp"
 
 LpAnalyzer::LpAnalyzer()
 {
@@ -8,31 +8,32 @@ LpAnalyzer::LpAnalyzer()
 LpAnalyzer::LpAnalyzer(VideoCapture _vc)
 {
 	orgVideo = _vc;
-	checkSize();
+
+	Mat frame;
+	orgVideo >> frame;
+
+	if (frame.empty()) 
+	{
+		rows = NULL;
+		cols = NULL;
+	}
+		return;
+
+	rows = frame.rows;
+	cols = frame.cols;
 }
 
 LpAnalyzer::LpAnalyzer(Mat _img)
 {
 	orgImg = _img;
+
+	rows = _img.rows;
+	cols = _img.cols;
 }
 
 LpAnalyzer::~LpAnalyzer()
 {
 	orgVideo.release();
-}
-
-void LpAnalyzer::checkSize()
-{
-	Mat frame;
-	orgVideo >> frame;
-
-	if (frame.empty())
-		return;
-
-	rows = frame.rows;
-	cols = frame.cols;
-
-	return;
 }
 
 void LpAnalyzer::analyzeVideo()

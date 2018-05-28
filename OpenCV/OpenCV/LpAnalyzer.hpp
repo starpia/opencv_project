@@ -10,8 +10,6 @@ private:
 	VideoCapture orgVideo;
 	Mat orgImg;
 
-	void checkSize();
-
 public:
 	int rows;
 	int cols;

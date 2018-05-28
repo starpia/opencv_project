@@ -1,4 +1,4 @@
-#include "VideoAnalyzer.hpp"
+#include "LpAnalyzer.hpp"
 
 int main(int argc, char **argv)
 {

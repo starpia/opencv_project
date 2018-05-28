@@ -133,10 +133,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="VideoAnalyzer.cpp" />
+    <ClCompile Include="LpAnalyzer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VideoAnalyzer.hpp" />
+    <ClInclude Include="LpAnalyzer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
