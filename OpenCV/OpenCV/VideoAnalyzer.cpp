@@ -1,30 +1,27 @@
 #include "VideoAnalyzer.hpp"
 
-VideoAnalyzer::VideoAnalyzer()
+LpAnalyzer::LpAnalyzer()
 {
 
 }
 
-VideoAnalyzer::VideoAnalyzer(string _fname)
+LpAnalyzer::LpAnalyzer(VideoCapture _vc)
 {
-	orgVideo = VideoCapture(_fname);
-	if (!orgVideo.isOpened())
-	{
-		orgVideo = NULL;
-		cout << "Error opening video stream or file." << endl;
-	}
-	else
-	{
-		checkSize();
-	}
+	orgVideo = _vc;
+	checkSize();
 }
 
-VideoAnalyzer::~VideoAnalyzer()
+LpAnalyzer::LpAnalyzer(Mat _img)
+{
+	orgImg = _img;
+}
+
+LpAnalyzer::~LpAnalyzer()
 {
 	orgVideo.release();
 }
 
-void VideoAnalyzer::checkSize()
+void LpAnalyzer::checkSize()
 {
 	Mat frame;
 	orgVideo >> frame;
@@ -38,10 +35,16 @@ void VideoAnalyzer::checkSize()
 	return;
 }
 
-void VideoAnalyzer::analyzeVideo()
+void LpAnalyzer::analyzeVideo()
 {
 
 	Mat frame;
+
+	if (!orgVideo.isOpened())
+	{
+		cout << "video open error!" << endl;
+		return;
+	}
 
 	while (true)
 	{
@@ -65,7 +68,7 @@ void VideoAnalyzer::analyzeVideo()
 	return;
 }
 
-void VideoAnalyzer::analyzeImage(Mat &_img)
+void LpAnalyzer::analyzeImage(Mat &_img)
 {
 	Mat analyzeImg;
 	Mat kernel(5, 5, CV_8U);
@@ -95,7 +98,7 @@ void VideoAnalyzer::analyzeImage(Mat &_img)
 
 }
 
-void VideoAnalyzer::halfOfImage(Mat &_img)
+void LpAnalyzer::halfOfImage(Mat &_img)
 {
 	static int horizon = (_img.rows / 2) - 20;
 

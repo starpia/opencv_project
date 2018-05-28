@@ -4,10 +4,11 @@
 using namespace std;
 using namespace cv;
 
-class VideoAnalyzer
+class LpAnalyzer
 {
 private:
 	VideoCapture orgVideo;
+	Mat orgImg;
 
 	void checkSize();
 
@@ -15,10 +16,11 @@ public:
 	int rows;
 	int cols;
 
-	VideoAnalyzer();
-	VideoAnalyzer(string _fname);
-	~VideoAnalyzer();
+	LpAnalyzer();
+	LpAnalyzer(VideoCapture _vc);
+	LpAnalyzer(Mat _img);
+	~LpAnalyzer();
 	void analyzeVideo();
-	static void analyzeImage(Mat &_img);
+	void analyzeImage(Mat &_img);
 	void halfOfImage(Mat &_img);
 };
